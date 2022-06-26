@@ -49,8 +49,8 @@ function M.setup(config)
     Normal = { fg = c.fg, bg = config.transparent and c.none or c.bg }, -- normal text
     NormalNC = { fg = c.fg, bg = config.transparent and c.none or c.bg }, -- normal text in non-current windows
     NormalSB = { fg = c.fg_sidebar, bg = c.bg_sidebar }, -- normal text in non-current windows
-    NormalFloat = { fg = c.fg, bg = c.bg_float }, -- Normal text in floating windows.
-    FloatBorder = { fg = c.border_highlight },
+    NormalFloat = { fg = c.bg_visual, bg = util.lighten(c.bg_sidebar, 0.9) }, -- Normal text in floating windows.
+    FloatBorder = { bg = util.lighten(c.bg_sidebar, 0.9), fg = util.lighten(c.bg_sidebar, 0.9) },
     Pmenu = { bg = c.bg_popup, fg = c.fg }, -- Popup menu: normal item.
     PmenuSel = { bg = util.darken(c.fg_gutter, 0.8) }, -- Popup menu: selected item.
     PmenuSbar = { bg = util.lighten(c.bg_popup, 0.95) }, -- Popup menu: scrollbar.
@@ -219,7 +219,7 @@ function M.setup(config)
     TSNamespace = { fg = c.red }, -- For identifiers referring to modules and namespaces.
     -- TSNone              = { };    -- TODO: docs
     -- TSNumber            = { };    -- For all numbers
-    TSOperator = {fg = util.darken(c.orange, 0.85) }, -- For any operator: `+`, but also `->` and `*` in C.
+    TSOperator = { fg = util.darken(c.orange, 0.85) }, -- For any operator: `+`, but also `->` and `*` in C.
     TSParameter = { fg = c.red }, -- For parameters of a function.
     -- TSParameterReference= { };    -- For references to parameters of a function.
     TSProperty = { fg = c.red }, -- Same as `TSField`.
@@ -290,21 +290,24 @@ function M.setup(config)
 
     -- Telescope
     TelescopeBorder = { fg = util.darken(c.fg, 0.75) },
-    TelescopePromptBorder = { fg = c.fg_light },
-    TelescopeResultsBorder = { fg = util.darken(c.fg, 0.75) },
+    TelescopeResultsBorder = { bg = c.bg, fg = c.bg },
+    TelescopePreviewBorder = { bg = c.bg, fg = c.bg },
+    TelescopePromptBorder = { bg = c.bg_highlight, fg = c.bg_highlight },
+    TelescopePromptNormal = { bg = c.bg_highlight },
     TelescopeSelectionCaret = { fg = c.purple },
     TelescopeSelection = { fg = c.purple, bg = c.bg_highlight },
     TelescopeMatching = { fg = c.blue },
 
     -- NvimTree
+    NvimTreeVertSplit = { fg = c.bg_sidebar, bg = c.bg_sidebar },
     NvimTreeNormal = { fg = c.tree_normal, bg = c.bg_sidebar },
-    NvimTreeFolderIcon = {fg = c.comment},
+    NvimTreeFolderIcon = { fg = c.comment },
     NvimTreeRootFolder = { fg = c.fg_light, style = "bold" },
     NvimTreeSymlink = { fg = c.blue },
-    NvimTreeFolderName = { fg = c.tree_normal},
-    NvimTreeEmptyFolderName = { fg = c.comment},
-    NvimTreeOpenedFolderName = {fg = c.purple},
-    NvimTreeOpenedFile = { fg = c.purple}, -- TODO: not working
+    NvimTreeFolderName = { fg = c.tree_normal },
+    NvimTreeEmptyFolderName = { fg = c.comment },
+    NvimTreeOpenedFolderName = { fg = c.purple },
+    NvimTreeOpenedFile = { fg = c.purple }, -- TODO: not working
     NvimTreeGitDirty = { fg = c.yellow2 },
     NvimTreeGitNew = { fg = c.git.add },
     NvimTreeGitDeleted = { fg = c.git.delete },
@@ -328,7 +331,7 @@ function M.setup(config)
     WhichKeyDesc = { fg = c.red },
     WhichKeySeperator = { fg = c.fg },
     WhichKeySeparator = { fg = c.fg },
-    WhichKeyFloat = { bg = c.bg_sidebar },
+    WhichKeyFloat = { bg = util.lighten(c.bg_sidebar, 0.9) },
     WhichKeyValue = { fg = c.dark5 },
 
     -- LspSaga
@@ -336,12 +339,12 @@ function M.setup(config)
     DiagnosticWarning = { fg = c.warning },
     DiagnosticInformation = { fg = c.info },
     DiagnosticHint = { fg = c.hint },
-    LspSagaHoverBorder = { fg = c.border},
-    LspSagaSignatureHelpBorder = { fg = c.border},
-    LspSagaCodeActionBorder = { fg = c.border},
-    LspSagaAutoPreview = { fg = c.border},
-    LspSagaDefPreviewBorder = {fg = c.border},
-    LspLinesDiagBorder = { fg = c.border},
+    LspSagaHoverBorder = { fg = c.border },
+    LspSagaSignatureHelpBorder = { fg = c.border },
+    LspSagaCodeActionBorder = { fg = c.border },
+    LspSagaAutoPreview = { fg = c.border },
+    LspSagaDefPreviewBorder = { fg = c.border },
+    LspLinesDiagBorder = { fg = c.border },
 
     -- NeoVim
     healthError = { fg = c.error },
@@ -354,8 +357,8 @@ function M.setup(config)
 
     -- Hop
     HopNextKey = { fg = c.red, style = "bold" },
-	HopNextKey1 = { fg = c.blue, style = "bold" },
-	HopNextKey2 = { fg = util.darken(c.blue, 0.80) },
+    HopNextKey1 = { fg = c.blue, style = "bold" },
+    HopNextKey2 = { fg = util.darken(c.blue, 0.80) },
     HopUnmatched = { fg = c.comment },
 
   }
