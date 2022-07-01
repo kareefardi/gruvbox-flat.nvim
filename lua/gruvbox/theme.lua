@@ -49,8 +49,8 @@ function M.setup(config)
     Normal = { fg = c.fg, bg = config.transparent and c.none or c.bg }, -- normal text
     NormalNC = { fg = c.fg, bg = config.transparent and c.none or c.bg }, -- normal text in non-current windows
     NormalSB = { fg = c.fg_sidebar, bg = c.bg_sidebar }, -- normal text in non-current windows
-    NormalFloat = { fg = c.bg_visual, bg = util.lighten(c.bg_sidebar, 0.9) }, -- Normal text in floating windows.
-    FloatBorder = { bg = util.lighten(c.bg_sidebar, 0.9), fg = util.lighten(c.bg_sidebar, 0.9) },
+    NormalFloat = { fg = c.fg, bg = util.lighten(c.bg, 0.95) }, -- Normal text in floating windows. w
+    FloatBorder = { bg = util.lighten(c.bg, 0.95), fg = util.lighten(c.bg, 0.95) },
     Pmenu = { bg = c.bg_popup, fg = c.fg }, -- Popup menu: normal item.
     PmenuSel = { bg = util.darken(c.fg_gutter, 0.8) }, -- Popup menu: selected item.
     PmenuSbar = { bg = util.lighten(c.bg_popup, 0.95) }, -- Popup menu: scrollbar.
@@ -289,9 +289,10 @@ function M.setup(config)
     GitSignsDelete = { fg = c.gitSigns.delete }, -- diff mode: Deleted line |diff.txt|
 
     -- Telescope
+    TelescopeNormal = { bg = util.lighten(c.bg, 0.95) },
     TelescopeBorder = { fg = util.darken(c.fg, 0.75) },
-    TelescopeResultsBorder = { bg = c.bg, fg = c.bg },
-    TelescopePreviewBorder = { bg = c.bg, fg = c.bg },
+    TelescopeResultsBorder = { bg = util.lighten(c.bg, 0.95), fg = util.lighten(c.bg, 0.95) },
+    TelescopePreviewBorder = { bg = util.lighten(c.bg, 0.95), fg = util.lighten(c.bg, 0.95) },
     TelescopePromptBorder = { bg = c.bg_highlight, fg = c.bg_highlight },
     TelescopePromptNormal = { bg = c.bg_highlight },
     TelescopeSelectionCaret = { fg = c.purple },
@@ -326,12 +327,12 @@ function M.setup(config)
     DashboardFooter = { fg = c.yellow, style = "italic" },
 
     -- WhichKey
-    WhichKey = { fg = c.yellow },
+    WhichKey = { fg = c.fg },
     WhichKeyGroup = { fg = c.blue },
     WhichKeyDesc = { fg = c.red },
     WhichKeySeperator = { fg = c.fg },
     WhichKeySeparator = { fg = c.fg },
-    WhichKeyFloat = { bg = util.lighten(c.bg_sidebar, 0.9) },
+    WhichKeyFloat = { bg = util.lighten(c.bg, 0.95) },
     WhichKeyValue = { fg = c.dark5 },
 
     -- LspSaga
